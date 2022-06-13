@@ -1,6 +1,8 @@
+import "./Spinner.css";
+
 function Spinner() {
-  return (  
-    <span className="Spinner"> </span>
+  return (
+    <div className="Spinner"></div>
   );
 }
 

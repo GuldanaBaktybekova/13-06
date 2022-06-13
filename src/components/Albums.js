@@ -1,16 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Photo from "./Photo";
+import Album from "./Album";
 import Spinner from "./Spinner";
 
-function Photos() {
-  const [photos, setPhotos] = useState([]);
+function Albums() {
+  const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(function() {
-    axios.get('https://jsonplaceholder.typicode.com/photos')
+    axios.get('https://jsonplaceholder.typicode.com/albums')
       .then(({ data }) => {
-        setPhotos(data);
+        setAlbums(data);
         setLoading(false);
       });
   }, []);
@@ -18,16 +18,16 @@ function Photos() {
 
   let output = <Spinner />;
   if (!loading) {
-    output = photos
+    output = albums
       .slice(0, 5)
-      .map(photo => <Photo key={photo.id} {...photo} />);
+      .map(album => <Album key={album.id} {...album} />);
   }
 
   return (
-    <div className="Photos">
+    <div className="Albums">
       {output}
     </div>
   );
 }
 
-export default Photos;
+export default Albums;
